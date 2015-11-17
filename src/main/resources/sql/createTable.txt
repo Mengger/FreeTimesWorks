@@ -78,4 +78,20 @@ create table orders(
 	order_status varchar(2) COMMENT '订单状态   1待接车  2待派单  3待检查  4待维修  5待完成   6待结账  7工单信息待完善  8待回访  9完成'
 );
 
-create 
+create table part_info(
+	part_create_time date COMMENT '配件首次创建时间',
+	part_no varchar(30) COMMENT '配件编号',
+	stock_amount int COMMENT '配件库存数量',
+	last_buy_price int COMMENT '最后一次进货价格',
+	max_buy_price int COMMENT '历史进货最高单价',
+	average_buy_price int COMMENT '平均购买价格',
+	
+	
+);
+
+create table order_detail(
+	order_num varchar(15) COMMENT '订单号',
+	
+	
+	
+);
