@@ -1,0 +1,73 @@
+CREATE TABLE Customer(
+	id_Card_No varchar(18) PRIMARY KEY COMMENT '身份证号码',
+	name varchar(10) NOT NULL COMMENT '姓名',
+	nation varchar(5) COMMENT '民族',
+	birthday date COMMENT '出生日期',
+	address varchar(80) COMMENT '家庭地址',
+	phone_Num varchar(11) NOT NULL COMMENT '手机号码',
+	second_phone_num varchar(11) COMMENT '备用手机号',
+	home_Num varchar(12) COMMENT '家庭电话号码',
+	emergency_Num varchar(12) COMMENT '紧急联系电话',
+	gender varchar(1) COMMENT '性别 1代表男    0代表女',
+	hobby varchar(200) COMMENT '兴趣 爱好',
+	works_Property varchar(50) COMMENT '工作类型',
+	QQ_num varchar(12) COMMENT 'QQ号码',
+	nike_name varchar(20) COMMENT '会员昵称',
+	auto_mobile varchar(100) COMMENT '车牌号码',
+	e_mail varchar(50) COMMENT 'e-mail',
+	create_time date NOT NULL COMMENT '创建时间',
+	modify_time date COMMENT '修改时间',
+	ext1 varchar(100) COMMENT '备注字段',
+	ext2 varchar(500) COMMENT '备注字段',
+	ext3 varchar(20) COMMENT '备注字段',
+	ext4 varchar(20) COMMENT '备注字段',
+	ext5 date COMMENT '备注字段'
+) ;
+
+create table automobile(
+	automobile_license varchar(10) COMMENT '车牌号',
+	frame_number varchar(17) primary key COMMENT '车架号',
+	engine_number varchar(17) COMMENT '发动机号',
+	automobile_brand varchar(20) COMMENT '汽车品牌',
+	automobile_model varchar(20) COMMENT '汽车型号',
+	automobile_output_value varchar(5) COMMENT '排量',
+	automobile_color varchar(8) comment '汽车颜色',
+	seat int COMMENT '座位数',
+	automobile_pic varchar(100) COMMENT '汽车照片路径',
+	create_time date COMMENT '创建时间',
+	modify_time date COMMENT '修改时间',
+	ext1 varchar(100) COMMENT '备注字段',
+	ext2 varchar(500) COMMENT '备注字段',
+	ext3 varchar(20) COMMENT '备注字段',
+	ext4 varchar(20) COMMENT '备注字段',
+	ext5 date COMMENT '备注字段'
+);
+
+create table orders(
+	order_create_time date COMMENT '订单创建时间',
+	order_modify_time date  COMMENT '订单修改时间',
+	order_num varchar(15) primary key  COMMENT '订单号',
+	automobile_frame_number varchar(17)  COMMENT '车架号',
+	service_station_no varchar(17) COMMENT '服务站编号',
+	service_station_split_no varchar(13) COMMENT '分店编号',
+	part_consume_count int COMMENT '配件总价格',
+	part_discount int COMMENT '配件折扣,打几折',
+	part_count_discount int COMMENT '配件折扣价格',
+	man_hour_count int COMMENT '工时数',
+	man_hour_price int COMMENT '工时单价',
+	man_hour_discount int COMMENT '工时折扣,打几折',
+	man_hour_discount_count int COMMENT '工时折扣价格',
+	total_prices int COMMENT '总消费',
+	total_discount int COMMENT '总折扣',
+	customer_desc varchar(1000) COMMENT '客户描述症状',
+	automobile_doctor_diagnosis_result varchar(1000) COMMENT '维修技师诊断结果',
+	doctor_advice varchar(1000) COMMENT '维修技师建议',
+	replace_part varchar(1000) COMMENT '替换配件',
+	service_type varchar(5) COMMENT '服务类型  0检测  1保养 2维修 3美容  4事故  1-2保养加维修',
+	doctor_team_no varchar(20)	COMMENT '技师团队',
+	repair_doctor_no varchar(20) COMMENT '主维修技师no',
+	check_doctor_no varchar(20)	COMMENT '复查技师no',
+	last_check_doctor_no varchar(20) COMMENT '最终质检技师'
+);
+
+create 
