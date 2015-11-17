@@ -64,10 +64,18 @@ create table orders(
 	doctor_advice varchar(1000) COMMENT '维修技师建议',
 	replace_part varchar(1000) COMMENT '替换配件',
 	service_type varchar(5) COMMENT '服务类型  0检测  1保养 2维修 3美容  4事故  1-2保养加维修',
-	doctor_team_no varchar(20)	COMMENT '技师团队',
+	service_adviser varchar(10) COMMENT '服务顾问',
+	doctor_team_no varchar(20)	COMMENT '维修团队',
 	repair_doctor_no varchar(20) COMMENT '主维修技师no',
 	check_doctor_no varchar(20)	COMMENT '复查技师no',
-	last_check_doctor_no varchar(20) COMMENT '最终质检技师'
+	last_check_doctor_no varchar(20) COMMENT '最终质检技师',
+	cust_call_back_num varchar(12) COMMENT '客户回访电话',
+	Call_back_result varchar(3) COMMENT '回访结果  客户打分分数',
+	cust_call_back_memo varchar(1000) COMMENT '客户回访的应答',
+	cust_satisfaction varchar(3) COMMENT '客户满意度  客户自己评价',
+	cust_memo varchar(1000) COMMENT '客户自己评价内容',
+	cust_assess_pic varchar(200) COMMENT '客户上传照片路径',
+	order_status varchar(2) COMMENT '订单状态   1待接车  2待派单  3待检查  4待维修  5待完成   6待结账  7工单信息待完善  8待回访  9完成'
 );
 
 create 
