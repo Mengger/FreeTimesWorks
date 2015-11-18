@@ -64,7 +64,7 @@ create table orders(
 	total_prices int COMMENT '总消费',
 	total_discount int COMMENT '总折扣',
 	repair_person_allow varchar(18) COMMENT '送修人',
-	is_himself varchar(1) COMMENT '是否为车主  0不是    1车主',
+	is_himself varchar(1) COMMENT '送修人是否为车主  0不是    1车主',
 	customer_desc varchar(1000) COMMENT '客户描述症状',
 	automobile_doctor_diagnosis_result varchar(1000) COMMENT '维修技师诊断结果',
 	doctor_advice varchar(1000) COMMENT '维修技师建议',
@@ -81,6 +81,9 @@ create table orders(
 	cust_satisfaction varchar(3) COMMENT '客户满意度  客户自己评价',
 	cust_memo varchar(1000) COMMENT '客户自己评价内容',
 	cust_assess_pic varchar(200) COMMENT '客户上传照片路径',
+	is_need_invoice varchar(1) COMMENT '是否需要发票   0不需要   1需要',
+	invoice_title varchar(100) COMMENT '发票抬头',
+	invoice_status varchar(1)  COMMENT '发票状态  0未打印   1已打印',
 	order_status varchar(2) COMMENT '订单状态   1待接车  2待派单  3待检查  4待维修  5待完成   6待结账  7工单信息待完善  8待回访  9完成'
 );
 
@@ -118,12 +121,12 @@ create table storage_sale_order_info(
 	purchase_count_price int COMMENT '总价',
 	order_status varchar(1) COMMENT '订单状态  0挂账  1现付  2财务已结账',
 	order_type varchar(1) COMMENT '订单类型  0入库订单   1出库订单',
-	
+	order_num varchar(15) COMMENT '出库时的订单号',
+	operator varchar(20) COMMENT '操作人'
 );
 create table order_detail(
 	order_num varchar(15) COMMENT '订单号',
-	part_order_no varchar(30) COMMENT '配件订单编号',
-	
-	
-	
+	project_desc varchar(200) COMMENT '所做项目描述',
+	replace_part_man_hour int COMMENT '工时数',
+	doctor_no varchar(20)	COMMENT '维修技师no'
 );
