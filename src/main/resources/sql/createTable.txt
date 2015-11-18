@@ -33,6 +33,10 @@ create table automobile(
 	automobile_output_value varchar(5) COMMENT '排量',
 	automobile_color varchar(8) comment '汽车颜色',
 	seat int COMMENT '座位数',
+	automobile_insurance_company varchar(40) COMMENT '汽车保险公司',
+	compulsory_insurance_time date COMMENT '交强险的有效期',
+	other_insurance_time date COMMENT '其他保险的有效期',
+	insurance_type varchar(15) COMMENT '保险类型',
 	automobile_pic varchar(100) COMMENT '汽车照片路径',
 	create_time date COMMENT '创建时间',
 	modify_time date COMMENT '修改时间',
@@ -59,6 +63,8 @@ create table orders(
 	man_hour_discount_count int COMMENT '工时折扣价格',
 	total_prices int COMMENT '总消费',
 	total_discount int COMMENT '总折扣',
+	repair_person_allow varchar(18) COMMENT '送修人',
+	is_himself varchar(1) COMMENT '是否为车主  0不是    1车主',
 	customer_desc varchar(1000) COMMENT '客户描述症状',
 	automobile_doctor_diagnosis_result varchar(1000) COMMENT '维修技师诊断结果',
 	doctor_advice varchar(1000) COMMENT '维修技师建议',
@@ -80,17 +86,43 @@ create table orders(
 
 create table part_info(
 	part_create_time date COMMENT '配件首次创建时间',
+	service_station_no varchar(17) COMMENT '服务站编号',
+	service_station_split_no varchar(13) COMMENT '分店编号',
+	warehouse_area varchar(30) COMMENT '库区',
+	position_items varchar(30) COMMENT '仓位',
 	part_no varchar(30) COMMENT '配件编号',
+	part_name varchar(50) COMMENT '配件名称',
 	stock_amount int COMMENT '配件库存数量',
-	last_buy_price int COMMENT '最后一次进货价格',
-	max_buy_price int COMMENT '历史进货最高单价',
-	average_buy_price int COMMENT '平均购买价格',
-	
-	
+	last_buy_price int COMMENT '最后一次入库价格',
+	max_buy_price int COMMENT '历史入库最高单价',
+	average_buy_price int COMMENT '平均入库价格',
+	near_sale_price int COMMENT '最近一次出库价格',
+	average_sale_price int COMMENT '平均出库价格',
+	top_sale_price int COMMENT '最高出库价格',
+	low_sale_price int COMMENT '最低出库价格'
 );
 
+create table storage_sale_order_info(
+	part_order_create_time date COMMENT '配件订单创建时间',
+	part_order_no varchar(30) COMMENT '配件订单编号',
+	part_no varchar(30) COMMENT '配件编号',
+	part_name varchar(50) COMMENT '配件名称',
+	service_station_no varchar(17) COMMENT '服务站编号',
+	service_station_split_no varchar(13) COMMENT '分店编号',
+	warehouse_area varchar(30) COMMENT '库区',
+	position_items varchar(30) COMMENT '仓位',
+	part_supplier_no varchar(20) COMMENT '供应商编号',
+	part_supplier_name varchar(60) COMMENT '供应商名称',
+	purchase_num int COMMENT '数量',
+	purchase_unit_price int COMMENT '单价',
+	purchase_count_price int COMMENT '总价',
+	order_status varchar(1) COMMENT '订单状态  0挂账  1现付  2财务已结账',
+	order_type varchar(1) COMMENT '订单类型  0入库订单   1出库订单',
+	
+);
 create table order_detail(
 	order_num varchar(15) COMMENT '订单号',
+	part_order_no varchar(30) COMMENT '配件订单编号',
 	
 	
 	
