@@ -1,0 +1,702 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.freeTime.dao.OrdersMapper" >
+  <resultMap id="BaseResultMap" type="com.freeTime.domain.Orders" >
+    <id column="order_num" property="orderNum" jdbcType="VARCHAR" />
+    <result column="order_create_time" property="orderCreateTime" jdbcType="DATE" />
+    <result column="order_modify_time" property="orderModifyTime" jdbcType="DATE" />
+    <result column="automobile_frame_number" property="automobileFrameNumber" jdbcType="VARCHAR" />
+    <result column="service_station_no" property="serviceStationNo" jdbcType="VARCHAR" />
+    <result column="service_station_split_no" property="serviceStationSplitNo" jdbcType="VARCHAR" />
+    <result column="part_consume_count" property="partConsumeCount" jdbcType="INTEGER" />
+    <result column="part_discount" property="partDiscount" jdbcType="INTEGER" />
+    <result column="part_count_discount" property="partCountDiscount" jdbcType="INTEGER" />
+    <result column="man_hour_count" property="manHourCount" jdbcType="INTEGER" />
+    <result column="man_hour_price" property="manHourPrice" jdbcType="INTEGER" />
+    <result column="man_hour_discount" property="manHourDiscount" jdbcType="INTEGER" />
+    <result column="man_hour_discount_count" property="manHourDiscountCount" jdbcType="INTEGER" />
+    <result column="total_prices" property="totalPrices" jdbcType="INTEGER" />
+    <result column="total_discount" property="totalDiscount" jdbcType="INTEGER" />
+    <result column="repair_person_allow" property="repairPersonAllow" jdbcType="VARCHAR" />
+    <result column="is_himself" property="isHimself" jdbcType="VARCHAR" />
+    <result column="customer_desc" property="customerDesc" jdbcType="VARCHAR" />
+    <result column="automobile_doctor_diagnosis_result" property="automobileDoctorDiagnosisResult" jdbcType="VARCHAR" />
+    <result column="doctor_advice" property="doctorAdvice" jdbcType="VARCHAR" />
+    <result column="replace_part" property="replacePart" jdbcType="VARCHAR" />
+    <result column="service_type" property="serviceType" jdbcType="VARCHAR" />
+    <result column="service_adviser" property="serviceAdviser" jdbcType="VARCHAR" />
+    <result column="doctor_team_no" property="doctorTeamNo" jdbcType="VARCHAR" />
+    <result column="repair_doctor_no" property="repairDoctorNo" jdbcType="VARCHAR" />
+    <result column="check_doctor_no" property="checkDoctorNo" jdbcType="VARCHAR" />
+    <result column="last_check_doctor_no" property="lastCheckDoctorNo" jdbcType="VARCHAR" />
+    <result column="cust_call_back_num" property="custCallBackNum" jdbcType="VARCHAR" />
+    <result column="Call_back_result" property="callBackResult" jdbcType="VARCHAR" />
+    <result column="cust_call_back_memo" property="custCallBackMemo" jdbcType="VARCHAR" />
+    <result column="cust_satisfaction" property="custSatisfaction" jdbcType="VARCHAR" />
+    <result column="cust_memo" property="custMemo" jdbcType="VARCHAR" />
+    <result column="cust_assess_pic" property="custAssessPic" jdbcType="VARCHAR" />
+    <result column="is_need_invoice" property="isNeedInvoice" jdbcType="VARCHAR" />
+    <result column="invoice_title" property="invoiceTitle" jdbcType="VARCHAR" />
+    <result column="invoice_status" property="invoiceStatus" jdbcType="VARCHAR" />
+    <result column="order_status" property="orderStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    order_num, order_create_time, order_modify_time, automobile_frame_number, service_station_no, 
+    service_station_split_no, part_consume_count, part_discount, part_count_discount, 
+    man_hour_count, man_hour_price, man_hour_discount, man_hour_discount_count, total_prices, 
+    total_discount, repair_person_allow, is_himself, customer_desc, automobile_doctor_diagnosis_result, 
+    doctor_advice, replace_part, service_type, service_adviser, doctor_team_no, repair_doctor_no, 
+    check_doctor_no, last_check_doctor_no, cust_call_back_num, Call_back_result, cust_call_back_memo, 
+    cust_satisfaction, cust_memo, cust_assess_pic, is_need_invoice, invoice_title, invoice_status, 
+    order_status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where order_num = #{orderNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from orders
+    where order_num = #{orderNum,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.freeTime.domain.Orders" >
+    insert into orders (order_num, order_create_time, order_modify_time, 
+      automobile_frame_number, service_station_no, 
+      service_station_split_no, part_consume_count, 
+      part_discount, part_count_discount, man_hour_count, 
+      man_hour_price, man_hour_discount, man_hour_discount_count, 
+      total_prices, total_discount, repair_person_allow, 
+      is_himself, customer_desc, automobile_doctor_diagnosis_result, 
+      doctor_advice, replace_part, service_type, 
+      service_adviser, doctor_team_no, repair_doctor_no, 
+      check_doctor_no, last_check_doctor_no, cust_call_back_num, 
+      Call_back_result, cust_call_back_memo, cust_satisfaction, 
+      cust_memo, cust_assess_pic, is_need_invoice, 
+      invoice_title, invoice_status, order_status
+      )
+    values (#{orderNum,jdbcType=VARCHAR}, #{orderCreateTime,jdbcType=DATE}, #{orderModifyTime,jdbcType=DATE}, 
+      #{automobileFrameNumber,jdbcType=VARCHAR}, #{serviceStationNo,jdbcType=VARCHAR}, 
+      #{serviceStationSplitNo,jdbcType=VARCHAR}, #{partConsumeCount,jdbcType=INTEGER}, 
+      #{partDiscount,jdbcType=INTEGER}, #{partCountDiscount,jdbcType=INTEGER}, #{manHourCount,jdbcType=INTEGER}, 
+      #{manHourPrice,jdbcType=INTEGER}, #{manHourDiscount,jdbcType=INTEGER}, #{manHourDiscountCount,jdbcType=INTEGER}, 
+      #{totalPrices,jdbcType=INTEGER}, #{totalDiscount,jdbcType=INTEGER}, #{repairPersonAllow,jdbcType=VARCHAR}, 
+      #{isHimself,jdbcType=VARCHAR}, #{customerDesc,jdbcType=VARCHAR}, #{automobileDoctorDiagnosisResult,jdbcType=VARCHAR}, 
+      #{doctorAdvice,jdbcType=VARCHAR}, #{replacePart,jdbcType=VARCHAR}, #{serviceType,jdbcType=VARCHAR}, 
+      #{serviceAdviser,jdbcType=VARCHAR}, #{doctorTeamNo,jdbcType=VARCHAR}, #{repairDoctorNo,jdbcType=VARCHAR}, 
+      #{checkDoctorNo,jdbcType=VARCHAR}, #{lastCheckDoctorNo,jdbcType=VARCHAR}, #{custCallBackNum,jdbcType=VARCHAR}, 
+      #{callBackResult,jdbcType=VARCHAR}, #{custCallBackMemo,jdbcType=VARCHAR}, #{custSatisfaction,jdbcType=VARCHAR}, 
+      #{custMemo,jdbcType=VARCHAR}, #{custAssessPic,jdbcType=VARCHAR}, #{isNeedInvoice,jdbcType=VARCHAR}, 
+      #{invoiceTitle,jdbcType=VARCHAR}, #{invoiceStatus,jdbcType=VARCHAR}, #{orderStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.freeTime.domain.Orders" >
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="orderNum != null" >
+        order_num,
+      </if>
+      <if test="orderCreateTime != null" >
+        order_create_time,
+      </if>
+      <if test="orderModifyTime != null" >
+        order_modify_time,
+      </if>
+      <if test="automobileFrameNumber != null" >
+        automobile_frame_number,
+      </if>
+      <if test="serviceStationNo != null" >
+        service_station_no,
+      </if>
+      <if test="serviceStationSplitNo != null" >
+        service_station_split_no,
+      </if>
+      <if test="partConsumeCount != null" >
+        part_consume_count,
+      </if>
+      <if test="partDiscount != null" >
+        part_discount,
+      </if>
+      <if test="partCountDiscount != null" >
+        part_count_discount,
+      </if>
+      <if test="manHourCount != null" >
+        man_hour_count,
+      </if>
+      <if test="manHourPrice != null" >
+        man_hour_price,
+      </if>
+      <if test="manHourDiscount != null" >
+        man_hour_discount,
+      </if>
+      <if test="manHourDiscountCount != null" >
+        man_hour_discount_count,
+      </if>
+      <if test="totalPrices != null" >
+        total_prices,
+      </if>
+      <if test="totalDiscount != null" >
+        total_discount,
+      </if>
+      <if test="repairPersonAllow != null" >
+        repair_person_allow,
+      </if>
+      <if test="isHimself != null" >
+        is_himself,
+      </if>
+      <if test="customerDesc != null" >
+        customer_desc,
+      </if>
+      <if test="automobileDoctorDiagnosisResult != null" >
+        automobile_doctor_diagnosis_result,
+      </if>
+      <if test="doctorAdvice != null" >
+        doctor_advice,
+      </if>
+      <if test="replacePart != null" >
+        replace_part,
+      </if>
+      <if test="serviceType != null" >
+        service_type,
+      </if>
+      <if test="serviceAdviser != null" >
+        service_adviser,
+      </if>
+      <if test="doctorTeamNo != null" >
+        doctor_team_no,
+      </if>
+      <if test="repairDoctorNo != null" >
+        repair_doctor_no,
+      </if>
+      <if test="checkDoctorNo != null" >
+        check_doctor_no,
+      </if>
+      <if test="lastCheckDoctorNo != null" >
+        last_check_doctor_no,
+      </if>
+      <if test="custCallBackNum != null" >
+        cust_call_back_num,
+      </if>
+      <if test="callBackResult != null" >
+        Call_back_result,
+      </if>
+      <if test="custCallBackMemo != null" >
+        cust_call_back_memo,
+      </if>
+      <if test="custSatisfaction != null" >
+        cust_satisfaction,
+      </if>
+      <if test="custMemo != null" >
+        cust_memo,
+      </if>
+      <if test="custAssessPic != null" >
+        cust_assess_pic,
+      </if>
+      <if test="isNeedInvoice != null" >
+        is_need_invoice,
+      </if>
+      <if test="invoiceTitle != null" >
+        invoice_title,
+      </if>
+      <if test="invoiceStatus != null" >
+        invoice_status,
+      </if>
+      <if test="orderStatus != null" >
+        order_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="orderNum != null" >
+        #{orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="orderCreateTime != null" >
+        #{orderCreateTime,jdbcType=DATE},
+      </if>
+      <if test="orderModifyTime != null" >
+        #{orderModifyTime,jdbcType=DATE},
+      </if>
+      <if test="automobileFrameNumber != null" >
+        #{automobileFrameNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStationNo != null" >
+        #{serviceStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStationSplitNo != null" >
+        #{serviceStationSplitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partConsumeCount != null" >
+        #{partConsumeCount,jdbcType=INTEGER},
+      </if>
+      <if test="partDiscount != null" >
+        #{partDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="partCountDiscount != null" >
+        #{partCountDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="manHourCount != null" >
+        #{manHourCount,jdbcType=INTEGER},
+      </if>
+      <if test="manHourPrice != null" >
+        #{manHourPrice,jdbcType=INTEGER},
+      </if>
+      <if test="manHourDiscount != null" >
+        #{manHourDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="manHourDiscountCount != null" >
+        #{manHourDiscountCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrices != null" >
+        #{totalPrices,jdbcType=INTEGER},
+      </if>
+      <if test="totalDiscount != null" >
+        #{totalDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="repairPersonAllow != null" >
+        #{repairPersonAllow,jdbcType=VARCHAR},
+      </if>
+      <if test="isHimself != null" >
+        #{isHimself,jdbcType=VARCHAR},
+      </if>
+      <if test="customerDesc != null" >
+        #{customerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="automobileDoctorDiagnosisResult != null" >
+        #{automobileDoctorDiagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorAdvice != null" >
+        #{doctorAdvice,jdbcType=VARCHAR},
+      </if>
+      <if test="replacePart != null" >
+        #{replacePart,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null" >
+        #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceAdviser != null" >
+        #{serviceAdviser,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorTeamNo != null" >
+        #{doctorTeamNo,jdbcType=VARCHAR},
+      </if>
+      <if test="repairDoctorNo != null" >
+        #{repairDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDoctorNo != null" >
+        #{checkDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCheckDoctorNo != null" >
+        #{lastCheckDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custCallBackNum != null" >
+        #{custCallBackNum,jdbcType=VARCHAR},
+      </if>
+      <if test="callBackResult != null" >
+        #{callBackResult,jdbcType=VARCHAR},
+      </if>
+      <if test="custCallBackMemo != null" >
+        #{custCallBackMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="custSatisfaction != null" >
+        #{custSatisfaction,jdbcType=VARCHAR},
+      </if>
+      <if test="custMemo != null" >
+        #{custMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="custAssessPic != null" >
+        #{custAssessPic,jdbcType=VARCHAR},
+      </if>
+      <if test="isNeedInvoice != null" >
+        #{isNeedInvoice,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTitle != null" >
+        #{invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceStatus != null" >
+        #{invoiceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        #{orderStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.freeTime.domain.OrdersExample" resultType="java.lang.Integer" >
+    select count(*) from orders
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update orders
+    <set >
+      <if test="record.orderNum != null" >
+        order_num = #{record.orderNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderCreateTime != null" >
+        order_create_time = #{record.orderCreateTime,jdbcType=DATE},
+      </if>
+      <if test="record.orderModifyTime != null" >
+        order_modify_time = #{record.orderModifyTime,jdbcType=DATE},
+      </if>
+      <if test="record.automobileFrameNumber != null" >
+        automobile_frame_number = #{record.automobileFrameNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceStationNo != null" >
+        service_station_no = #{record.serviceStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceStationSplitNo != null" >
+        service_station_split_no = #{record.serviceStationSplitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.partConsumeCount != null" >
+        part_consume_count = #{record.partConsumeCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.partDiscount != null" >
+        part_discount = #{record.partDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="record.partCountDiscount != null" >
+        part_count_discount = #{record.partCountDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="record.manHourCount != null" >
+        man_hour_count = #{record.manHourCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.manHourPrice != null" >
+        man_hour_price = #{record.manHourPrice,jdbcType=INTEGER},
+      </if>
+      <if test="record.manHourDiscount != null" >
+        man_hour_discount = #{record.manHourDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="record.manHourDiscountCount != null" >
+        man_hour_discount_count = #{record.manHourDiscountCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalPrices != null" >
+        total_prices = #{record.totalPrices,jdbcType=INTEGER},
+      </if>
+      <if test="record.totalDiscount != null" >
+        total_discount = #{record.totalDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="record.repairPersonAllow != null" >
+        repair_person_allow = #{record.repairPersonAllow,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isHimself != null" >
+        is_himself = #{record.isHimself,jdbcType=VARCHAR},
+      </if>
+      <if test="record.customerDesc != null" >
+        customer_desc = #{record.customerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.automobileDoctorDiagnosisResult != null" >
+        automobile_doctor_diagnosis_result = #{record.automobileDoctorDiagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorAdvice != null" >
+        doctor_advice = #{record.doctorAdvice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.replacePart != null" >
+        replace_part = #{record.replacePart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceType != null" >
+        service_type = #{record.serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.serviceAdviser != null" >
+        service_adviser = #{record.serviceAdviser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.doctorTeamNo != null" >
+        doctor_team_no = #{record.doctorTeamNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.repairDoctorNo != null" >
+        repair_doctor_no = #{record.repairDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.checkDoctorNo != null" >
+        check_doctor_no = #{record.checkDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastCheckDoctorNo != null" >
+        last_check_doctor_no = #{record.lastCheckDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custCallBackNum != null" >
+        cust_call_back_num = #{record.custCallBackNum,jdbcType=VARCHAR},
+      </if>
+      <if test="record.callBackResult != null" >
+        Call_back_result = #{record.callBackResult,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custCallBackMemo != null" >
+        cust_call_back_memo = #{record.custCallBackMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custSatisfaction != null" >
+        cust_satisfaction = #{record.custSatisfaction,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custMemo != null" >
+        cust_memo = #{record.custMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.custAssessPic != null" >
+        cust_assess_pic = #{record.custAssessPic,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isNeedInvoice != null" >
+        is_need_invoice = #{record.isNeedInvoice,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceTitle != null" >
+        invoice_title = #{record.invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="record.invoiceStatus != null" >
+        invoice_status = #{record.invoiceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderStatus != null" >
+        order_status = #{record.orderStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update orders
+    set order_num = #{record.orderNum,jdbcType=VARCHAR},
+      order_create_time = #{record.orderCreateTime,jdbcType=DATE},
+      order_modify_time = #{record.orderModifyTime,jdbcType=DATE},
+      automobile_frame_number = #{record.automobileFrameNumber,jdbcType=VARCHAR},
+      service_station_no = #{record.serviceStationNo,jdbcType=VARCHAR},
+      service_station_split_no = #{record.serviceStationSplitNo,jdbcType=VARCHAR},
+      part_consume_count = #{record.partConsumeCount,jdbcType=INTEGER},
+      part_discount = #{record.partDiscount,jdbcType=INTEGER},
+      part_count_discount = #{record.partCountDiscount,jdbcType=INTEGER},
+      man_hour_count = #{record.manHourCount,jdbcType=INTEGER},
+      man_hour_price = #{record.manHourPrice,jdbcType=INTEGER},
+      man_hour_discount = #{record.manHourDiscount,jdbcType=INTEGER},
+      man_hour_discount_count = #{record.manHourDiscountCount,jdbcType=INTEGER},
+      total_prices = #{record.totalPrices,jdbcType=INTEGER},
+      total_discount = #{record.totalDiscount,jdbcType=INTEGER},
+      repair_person_allow = #{record.repairPersonAllow,jdbcType=VARCHAR},
+      is_himself = #{record.isHimself,jdbcType=VARCHAR},
+      customer_desc = #{record.customerDesc,jdbcType=VARCHAR},
+      automobile_doctor_diagnosis_result = #{record.automobileDoctorDiagnosisResult,jdbcType=VARCHAR},
+      doctor_advice = #{record.doctorAdvice,jdbcType=VARCHAR},
+      replace_part = #{record.replacePart,jdbcType=VARCHAR},
+      service_type = #{record.serviceType,jdbcType=VARCHAR},
+      service_adviser = #{record.serviceAdviser,jdbcType=VARCHAR},
+      doctor_team_no = #{record.doctorTeamNo,jdbcType=VARCHAR},
+      repair_doctor_no = #{record.repairDoctorNo,jdbcType=VARCHAR},
+      check_doctor_no = #{record.checkDoctorNo,jdbcType=VARCHAR},
+      last_check_doctor_no = #{record.lastCheckDoctorNo,jdbcType=VARCHAR},
+      cust_call_back_num = #{record.custCallBackNum,jdbcType=VARCHAR},
+      Call_back_result = #{record.callBackResult,jdbcType=VARCHAR},
+      cust_call_back_memo = #{record.custCallBackMemo,jdbcType=VARCHAR},
+      cust_satisfaction = #{record.custSatisfaction,jdbcType=VARCHAR},
+      cust_memo = #{record.custMemo,jdbcType=VARCHAR},
+      cust_assess_pic = #{record.custAssessPic,jdbcType=VARCHAR},
+      is_need_invoice = #{record.isNeedInvoice,jdbcType=VARCHAR},
+      invoice_title = #{record.invoiceTitle,jdbcType=VARCHAR},
+      invoice_status = #{record.invoiceStatus,jdbcType=VARCHAR},
+      order_status = #{record.orderStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.freeTime.domain.Orders" >
+    update orders
+    <set >
+      <if test="orderCreateTime != null" >
+        order_create_time = #{orderCreateTime,jdbcType=DATE},
+      </if>
+      <if test="orderModifyTime != null" >
+        order_modify_time = #{orderModifyTime,jdbcType=DATE},
+      </if>
+      <if test="automobileFrameNumber != null" >
+        automobile_frame_number = #{automobileFrameNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStationNo != null" >
+        service_station_no = #{serviceStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStationSplitNo != null" >
+        service_station_split_no = #{serviceStationSplitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partConsumeCount != null" >
+        part_consume_count = #{partConsumeCount,jdbcType=INTEGER},
+      </if>
+      <if test="partDiscount != null" >
+        part_discount = #{partDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="partCountDiscount != null" >
+        part_count_discount = #{partCountDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="manHourCount != null" >
+        man_hour_count = #{manHourCount,jdbcType=INTEGER},
+      </if>
+      <if test="manHourPrice != null" >
+        man_hour_price = #{manHourPrice,jdbcType=INTEGER},
+      </if>
+      <if test="manHourDiscount != null" >
+        man_hour_discount = #{manHourDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="manHourDiscountCount != null" >
+        man_hour_discount_count = #{manHourDiscountCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalPrices != null" >
+        total_prices = #{totalPrices,jdbcType=INTEGER},
+      </if>
+      <if test="totalDiscount != null" >
+        total_discount = #{totalDiscount,jdbcType=INTEGER},
+      </if>
+      <if test="repairPersonAllow != null" >
+        repair_person_allow = #{repairPersonAllow,jdbcType=VARCHAR},
+      </if>
+      <if test="isHimself != null" >
+        is_himself = #{isHimself,jdbcType=VARCHAR},
+      </if>
+      <if test="customerDesc != null" >
+        customer_desc = #{customerDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="automobileDoctorDiagnosisResult != null" >
+        automobile_doctor_diagnosis_result = #{automobileDoctorDiagnosisResult,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorAdvice != null" >
+        doctor_advice = #{doctorAdvice,jdbcType=VARCHAR},
+      </if>
+      <if test="replacePart != null" >
+        replace_part = #{replacePart,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceType != null" >
+        service_type = #{serviceType,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceAdviser != null" >
+        service_adviser = #{serviceAdviser,jdbcType=VARCHAR},
+      </if>
+      <if test="doctorTeamNo != null" >
+        doctor_team_no = #{doctorTeamNo,jdbcType=VARCHAR},
+      </if>
+      <if test="repairDoctorNo != null" >
+        repair_doctor_no = #{repairDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="checkDoctorNo != null" >
+        check_doctor_no = #{checkDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="lastCheckDoctorNo != null" >
+        last_check_doctor_no = #{lastCheckDoctorNo,jdbcType=VARCHAR},
+      </if>
+      <if test="custCallBackNum != null" >
+        cust_call_back_num = #{custCallBackNum,jdbcType=VARCHAR},
+      </if>
+      <if test="callBackResult != null" >
+        Call_back_result = #{callBackResult,jdbcType=VARCHAR},
+      </if>
+      <if test="custCallBackMemo != null" >
+        cust_call_back_memo = #{custCallBackMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="custSatisfaction != null" >
+        cust_satisfaction = #{custSatisfaction,jdbcType=VARCHAR},
+      </if>
+      <if test="custMemo != null" >
+        cust_memo = #{custMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="custAssessPic != null" >
+        cust_assess_pic = #{custAssessPic,jdbcType=VARCHAR},
+      </if>
+      <if test="isNeedInvoice != null" >
+        is_need_invoice = #{isNeedInvoice,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceTitle != null" >
+        invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
+      </if>
+      <if test="invoiceStatus != null" >
+        invoice_status = #{invoiceStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="orderStatus != null" >
+        order_status = #{orderStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where order_num = #{orderNum,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.freeTime.domain.Orders" >
+    update orders
+    set order_create_time = #{orderCreateTime,jdbcType=DATE},
+      order_modify_time = #{orderModifyTime,jdbcType=DATE},
+      automobile_frame_number = #{automobileFrameNumber,jdbcType=VARCHAR},
+      service_station_no = #{serviceStationNo,jdbcType=VARCHAR},
+      service_station_split_no = #{serviceStationSplitNo,jdbcType=VARCHAR},
+      part_consume_count = #{partConsumeCount,jdbcType=INTEGER},
+      part_discount = #{partDiscount,jdbcType=INTEGER},
+      part_count_discount = #{partCountDiscount,jdbcType=INTEGER},
+      man_hour_count = #{manHourCount,jdbcType=INTEGER},
+      man_hour_price = #{manHourPrice,jdbcType=INTEGER},
+      man_hour_discount = #{manHourDiscount,jdbcType=INTEGER},
+      man_hour_discount_count = #{manHourDiscountCount,jdbcType=INTEGER},
+      total_prices = #{totalPrices,jdbcType=INTEGER},
+      total_discount = #{totalDiscount,jdbcType=INTEGER},
+      repair_person_allow = #{repairPersonAllow,jdbcType=VARCHAR},
+      is_himself = #{isHimself,jdbcType=VARCHAR},
+      customer_desc = #{customerDesc,jdbcType=VARCHAR},
+      automobile_doctor_diagnosis_result = #{automobileDoctorDiagnosisResult,jdbcType=VARCHAR},
+      doctor_advice = #{doctorAdvice,jdbcType=VARCHAR},
+      replace_part = #{replacePart,jdbcType=VARCHAR},
+      service_type = #{serviceType,jdbcType=VARCHAR},
+      service_adviser = #{serviceAdviser,jdbcType=VARCHAR},
+      doctor_team_no = #{doctorTeamNo,jdbcType=VARCHAR},
+      repair_doctor_no = #{repairDoctorNo,jdbcType=VARCHAR},
+      check_doctor_no = #{checkDoctorNo,jdbcType=VARCHAR},
+      last_check_doctor_no = #{lastCheckDoctorNo,jdbcType=VARCHAR},
+      cust_call_back_num = #{custCallBackNum,jdbcType=VARCHAR},
+      Call_back_result = #{callBackResult,jdbcType=VARCHAR},
+      cust_call_back_memo = #{custCallBackMemo,jdbcType=VARCHAR},
+      cust_satisfaction = #{custSatisfaction,jdbcType=VARCHAR},
+      cust_memo = #{custMemo,jdbcType=VARCHAR},
+      cust_assess_pic = #{custAssessPic,jdbcType=VARCHAR},
+      is_need_invoice = #{isNeedInvoice,jdbcType=VARCHAR},
+      invoice_title = #{invoiceTitle,jdbcType=VARCHAR},
+      invoice_status = #{invoiceStatus,jdbcType=VARCHAR},
+      order_status = #{orderStatus,jdbcType=VARCHAR}
+    where order_num = #{orderNum,jdbcType=VARCHAR}
+  </update>
+</mapper>
