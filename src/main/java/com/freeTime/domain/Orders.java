@@ -3,78 +3,189 @@ package com.freeTime.domain;
 import java.util.Date;
 
 public class Orders {
+	/**
+	 * 订单号
+	 */
     private String orderNum;
 
+    /**
+	 * 订单创建时间
+	 */
     private Date orderCreateTime;
 
+    /**
+	 * 订单修改时间
+	 */
     private Date orderModifyTime;
 
+    /**
+	 * 车架号
+	 */
     private String automobileFrameNumber;
 
+    /**
+	 * 服务站编号
+	 */
     private String serviceStationNo;
 
+    /**
+	 * 分店编号
+	 */
     private String serviceStationSplitNo;
 
+    /**
+	 * 配件总价格
+	 */
     private Integer partConsumeCount;
 
+    /**
+	 * 配件折扣,打几折
+	 */
     private Integer partDiscount;
 
+    /**
+	 * 配件折扣价格
+	 */
     private Integer partCountDiscount;
 
+    /**
+	 * 工时数
+	 */
     private Integer manHourCount;
 
+    /**
+	 * 工时单价
+	 */
     private Integer manHourPrice;
 
+    /**
+	 * 工时折扣,打几折
+	 */
     private Integer manHourDiscount;
 
+    /**
+	 * 工时折扣价格
+	 */
     private Integer manHourDiscountCount;
 
+    /**
+	 * 总消费
+	 */
     private Integer totalPrices;
 
+    /**
+	 * 总折扣
+	 */
     private Integer totalDiscount;
 
+    /**
+	 * 送修人
+	 */
     private String repairPersonAllow;
 
+    /**
+	 * 送修人是否为车主  0不是    1车主
+	 */
     private String isHimself;
 
+    /**
+	 * 客户描述症状
+	 */
     private String customerDesc;
 
+    /**
+	 * 维修技师诊断结果
+	 */
     private String automobileDoctorDiagnosisResult;
 
+    /**
+	 * 维修技师建议
+	 */
     private String doctorAdvice;
 
+    /**
+	 * 替换配件
+	 */
     private String replacePart;
 
+    /**
+	 * 服务类型  0检测  1保养 2维修 3美容  4事故  1-2保养加维修
+	 */
     private String serviceType;
 
+    /**
+	 * 服务顾问
+	 */
     private String serviceAdviser;
 
+    /**
+	 * 维修团队
+	 */
     private String doctorTeamNo;
 
+    /**
+	 * 主维修技师no
+	 */
     private String repairDoctorNo;
 
+    /**
+	 * 复查技师no
+	 */
     private String checkDoctorNo;
 
+    /**
+	 * 最终质检技师
+	 */
     private String lastCheckDoctorNo;
 
+    /**
+	 * 客户回访电话
+	 */
     private String custCallBackNum;
 
+    /**
+	 * 回访结果  客户打分分数
+	 */
     private String callBackResult;
 
+    /**
+	 * 客户回访的应答
+	 */
     private String custCallBackMemo;
 
+    /**
+	 * 客户满意度  客户自己评价
+	 */
     private String custSatisfaction;
 
+    /**
+	 * 客户自己评价内容
+	 */
     private String custMemo;
 
+    /**
+	 * 客户上传照片路径
+	 */
     private String custAssessPic;
 
+    /**
+	 * 是否需要发票   0不需要   1需要
+	 */
     private String isNeedInvoice;
 
+    /**
+	 * 发票抬头
+	 */
     private String invoiceTitle;
 
+    /**
+	 * 发票状态  0未打印   1已打印
+	 */
     private String invoiceStatus;
 
+    /**
+	 * 订单状态   1待接车  2待派单  3待检查  4待维修  5待完成   6待结账  7工单信息待完善  8待回访  9完成
+	 */
     private String orderStatus;
 
     public String getOrderNum() {

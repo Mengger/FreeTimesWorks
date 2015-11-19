@@ -11,8 +11,8 @@
     <result column="automobile_color" property="automobileColor" jdbcType="VARCHAR" />
     <result column="seat" property="seat" jdbcType="INTEGER" />
     <result column="automobile_insurance_company" property="automobileInsuranceCompany" jdbcType="VARCHAR" />
-    <result column="compulsory_insurance_time" property="compulsoryInsuranceTime" jdbcType="DATE" />
-    <result column="other_insurance_time" property="otherInsuranceTime" jdbcType="DATE" />
+    <result column="compulsory_insurance_time" property="compulsoryInsuranceTime" jdbcType="VARCHAR" />
+    <result column="other_insurance_time" property="otherInsuranceTime" jdbcType="VARCHAR" />
     <result column="insurance_type" property="insuranceType" jdbcType="VARCHAR" />
     <result column="automobile_pic" property="automobilePic" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="DATE" />
@@ -23,64 +23,6 @@
     <result column="ext4" property="ext4" jdbcType="VARCHAR" />
     <result column="ext5" property="ext5" jdbcType="DATE" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
   <sql id="Base_Column_List" >
     frame_number, automobile_license, engine_number, automobile_brand, automobile_model, 
     automobile_output_value, automobile_color, seat, automobile_insurance_company, compulsory_insurance_time, 
@@ -108,7 +50,7 @@
     values (#{frameNumber,jdbcType=VARCHAR}, #{automobileLicense,jdbcType=VARCHAR}, #{engineNumber,jdbcType=VARCHAR}, 
       #{automobileBrand,jdbcType=VARCHAR}, #{automobileModel,jdbcType=VARCHAR}, #{automobileOutputValue,jdbcType=VARCHAR}, 
       #{automobileColor,jdbcType=VARCHAR}, #{seat,jdbcType=INTEGER}, #{automobileInsuranceCompany,jdbcType=VARCHAR}, 
-      #{compulsoryInsuranceTime,jdbcType=DATE}, #{otherInsuranceTime,jdbcType=DATE}, 
+      #{compulsoryInsuranceTime,jdbcType=VARCHAR}, #{otherInsuranceTime,jdbcType=VARCHAR}, 
       #{insuranceType,jdbcType=VARCHAR}, #{automobilePic,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, 
       #{modifyTime,jdbcType=DATE}, #{ext1,jdbcType=VARCHAR}, #{ext2,jdbcType=VARCHAR}, 
       #{ext3,jdbcType=VARCHAR}, #{ext4,jdbcType=VARCHAR}, #{ext5,jdbcType=DATE})
@@ -206,10 +148,10 @@
         #{automobileInsuranceCompany,jdbcType=VARCHAR},
       </if>
       <if test="compulsoryInsuranceTime != null" >
-        #{compulsoryInsuranceTime,jdbcType=DATE},
+        #{compulsoryInsuranceTime,jdbcType=VARCHAR},
       </if>
       <if test="otherInsuranceTime != null" >
-        #{otherInsuranceTime,jdbcType=DATE},
+        #{otherInsuranceTime,jdbcType=VARCHAR},
       </if>
       <if test="insuranceType != null" >
         #{insuranceType,jdbcType=VARCHAR},
@@ -240,106 +182,6 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.freeTime.domain.AutoMobileExample" resultType="java.lang.Integer" >
-    select count(*) from automobile
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update automobile
-    <set >
-      <if test="record.frameNumber != null" >
-        frame_number = #{record.frameNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="record.automobileLicense != null" >
-        automobile_license = #{record.automobileLicense,jdbcType=VARCHAR},
-      </if>
-      <if test="record.engineNumber != null" >
-        engine_number = #{record.engineNumber,jdbcType=VARCHAR},
-      </if>
-      <if test="record.automobileBrand != null" >
-        automobile_brand = #{record.automobileBrand,jdbcType=VARCHAR},
-      </if>
-      <if test="record.automobileModel != null" >
-        automobile_model = #{record.automobileModel,jdbcType=VARCHAR},
-      </if>
-      <if test="record.automobileOutputValue != null" >
-        automobile_output_value = #{record.automobileOutputValue,jdbcType=VARCHAR},
-      </if>
-      <if test="record.automobileColor != null" >
-        automobile_color = #{record.automobileColor,jdbcType=VARCHAR},
-      </if>
-      <if test="record.seat != null" >
-        seat = #{record.seat,jdbcType=INTEGER},
-      </if>
-      <if test="record.automobileInsuranceCompany != null" >
-        automobile_insurance_company = #{record.automobileInsuranceCompany,jdbcType=VARCHAR},
-      </if>
-      <if test="record.compulsoryInsuranceTime != null" >
-        compulsory_insurance_time = #{record.compulsoryInsuranceTime,jdbcType=DATE},
-      </if>
-      <if test="record.otherInsuranceTime != null" >
-        other_insurance_time = #{record.otherInsuranceTime,jdbcType=DATE},
-      </if>
-      <if test="record.insuranceType != null" >
-        insurance_type = #{record.insuranceType,jdbcType=VARCHAR},
-      </if>
-      <if test="record.automobilePic != null" >
-        automobile_pic = #{record.automobilePic,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createTime != null" >
-        create_time = #{record.createTime,jdbcType=DATE},
-      </if>
-      <if test="record.modifyTime != null" >
-        modify_time = #{record.modifyTime,jdbcType=DATE},
-      </if>
-      <if test="record.ext1 != null" >
-        ext1 = #{record.ext1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ext2 != null" >
-        ext2 = #{record.ext2,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ext3 != null" >
-        ext3 = #{record.ext3,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ext4 != null" >
-        ext4 = #{record.ext4,jdbcType=VARCHAR},
-      </if>
-      <if test="record.ext5 != null" >
-        ext5 = #{record.ext5,jdbcType=DATE},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update automobile
-    set frame_number = #{record.frameNumber,jdbcType=VARCHAR},
-      automobile_license = #{record.automobileLicense,jdbcType=VARCHAR},
-      engine_number = #{record.engineNumber,jdbcType=VARCHAR},
-      automobile_brand = #{record.automobileBrand,jdbcType=VARCHAR},
-      automobile_model = #{record.automobileModel,jdbcType=VARCHAR},
-      automobile_output_value = #{record.automobileOutputValue,jdbcType=VARCHAR},
-      automobile_color = #{record.automobileColor,jdbcType=VARCHAR},
-      seat = #{record.seat,jdbcType=INTEGER},
-      automobile_insurance_company = #{record.automobileInsuranceCompany,jdbcType=VARCHAR},
-      compulsory_insurance_time = #{record.compulsoryInsuranceTime,jdbcType=DATE},
-      other_insurance_time = #{record.otherInsuranceTime,jdbcType=DATE},
-      insurance_type = #{record.insuranceType,jdbcType=VARCHAR},
-      automobile_pic = #{record.automobilePic,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=DATE},
-      modify_time = #{record.modifyTime,jdbcType=DATE},
-      ext1 = #{record.ext1,jdbcType=VARCHAR},
-      ext2 = #{record.ext2,jdbcType=VARCHAR},
-      ext3 = #{record.ext3,jdbcType=VARCHAR},
-      ext4 = #{record.ext4,jdbcType=VARCHAR},
-      ext5 = #{record.ext5,jdbcType=DATE}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.freeTime.domain.AutoMobile" >
     update automobile
     <set >
@@ -368,10 +210,10 @@
         automobile_insurance_company = #{automobileInsuranceCompany,jdbcType=VARCHAR},
       </if>
       <if test="compulsoryInsuranceTime != null" >
-        compulsory_insurance_time = #{compulsoryInsuranceTime,jdbcType=DATE},
+        compulsory_insurance_time = #{compulsoryInsuranceTime,jdbcType=VARCHAR},
       </if>
       <if test="otherInsuranceTime != null" >
-        other_insurance_time = #{otherInsuranceTime,jdbcType=DATE},
+        other_insurance_time = #{otherInsuranceTime,jdbcType=VARCHAR},
       </if>
       <if test="insuranceType != null" >
         insurance_type = #{insuranceType,jdbcType=VARCHAR},
@@ -413,8 +255,8 @@
       automobile_color = #{automobileColor,jdbcType=VARCHAR},
       seat = #{seat,jdbcType=INTEGER},
       automobile_insurance_company = #{automobileInsuranceCompany,jdbcType=VARCHAR},
-      compulsory_insurance_time = #{compulsoryInsuranceTime,jdbcType=DATE},
-      other_insurance_time = #{otherInsuranceTime,jdbcType=DATE},
+      compulsory_insurance_time = #{compulsoryInsuranceTime,jdbcType=VARCHAR},
+      other_insurance_time = #{otherInsuranceTime,jdbcType=VARCHAR},
       insurance_type = #{insuranceType,jdbcType=VARCHAR},
       automobile_pic = #{automobilePic,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=DATE},

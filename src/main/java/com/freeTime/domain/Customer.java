@@ -3,52 +3,121 @@ package com.freeTime.domain;
 import java.util.Date;
 
 public class Customer {
+	/**
+	 * 身份证号码
+	 */
     private String idCardNo;
 
+    /**
+	 * 姓名
+	 */
     private String name;
 
+    /**
+	 * 民族
+	 */
     private String nation;
 
+    /**
+	 * 出生日期
+	 */
     private Date birthday;
 
+    /**
+	 * 家庭地址
+	 */
     private String address;
 
+    /**
+	 * 手机号码
+	 */
     private String phoneNum;
 
+    /**
+	 * 备用手机号
+	 */
     private String secondPhoneNum;
 
+    /**
+	 * 家庭电话号码
+	 */
     private String homeNum;
 
+    /**
+	 * 紧急联系电话
+	 */
     private String emergencyNum;
 
+    /**
+	 * 性别 1代表男    0代表女
+	 */
     private String gender;
 
+    /**
+	 * 兴趣 爱好
+	 */
     private String hobby;
 
+    /**
+	 * 工作类型
+	 */
     private String worksProperty;
 
+    /**
+	 * QQ号码
+	 */
     private String qqNum;
 
+    /**
+	 * 会员昵称
+	 */
     private String nikeName;
 
+    /**
+	 * 车牌号码
+	 */
     private String autoMobile;
 
+    /**
+	 * e-mail
+	 */
     private String eMail;
 
+    /**
+	 * 创建时间
+	 */
     private Date createTime;
 
+    /**
+	 * 修改时间
+	 */
     private Date modifyTime;
 
+    /**
+	 * 备注字段
+	 */
     private String ext1;
 
+    /**
+	 * 备注字段
+	 */
     private String ext2;
 
+    /**
+	 * 备注字段
+	 */
     private String ext3;
 
+    /**
+	 * 备注字段
+	 */
     private String ext4;
 
+    /**
+	 * 备注字段
+	 */
     private Date ext5;
-
+    
     public String getIdCardNo() {
         return idCardNo;
     }

@@ -3,38 +3,89 @@ package com.freeTime.domain;
 import java.util.Date;
 
 public class StorageSaleOrderInfo {
+	/**
+	 * 配件订单创建时间
+	 */
     private Date partOrderCreateTime;
 
+    /**
+	 * 配件订单编号
+	 */
     private String partOrderNo;
 
+    /**
+	 * 配件编号
+	 */
     private String partNo;
 
+    /**
+	 * 配件名称
+	 */
     private String partName;
 
+    /**
+	 * 服务站编号
+	 */
     private String serviceStationNo;
 
+    /**
+	 * 分店编号
+	 */
     private String serviceStationSplitNo;
 
+    /**
+	 * 库区
+	 */
     private String warehouseArea;
 
+    /**
+	 * 仓位
+	 */
     private String positionItems;
 
+    /**
+	 * 供应商编号
+	 */
     private String partSupplierNo;
 
+    /**
+	 * 供应商名称
+	 */
     private String partSupplierName;
 
+    /**
+	 * 数量
+	 */
     private Integer purchaseNum;
 
+    /**
+	 * 单价
+	 */
     private Integer purchaseUnitPrice;
 
+    /**
+	 * 总价
+	 */
     private Integer purchaseCountPrice;
 
+    /**
+	 * 订单状态  0挂账  1现付  2财务已结账
+	 */
     private String orderStatus;
 
+    /**
+	 * 订单类型  0入库订单   1出库订单
+	 */
     private String orderType;
 
+    /**
+	 * 出库时的订单号
+	 */
     private String orderNum;
 
+    /**
+	 * 操作人
+	 */
     private String operator;
 
     public Date getPartOrderCreateTime() {

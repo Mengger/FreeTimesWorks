@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.freeTime.dao.PartInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.freeTime.domain.PartInfo" >
+    <result column="part_create_time" property="partCreateTime" jdbcType="DATE" />
+    <result column="service_station_no" property="serviceStationNo" jdbcType="VARCHAR" />
+    <result column="service_station_split_no" property="serviceStationSplitNo" jdbcType="VARCHAR" />
+    <result column="warehouse_area" property="warehouseArea" jdbcType="VARCHAR" />
+    <result column="position_items" property="positionItems" jdbcType="VARCHAR" />
+    <result column="part_no" property="partNo" jdbcType="VARCHAR" />
+    <result column="part_name" property="partName" jdbcType="VARCHAR" />
+    <result column="stock_amount" property="stockAmount" jdbcType="INTEGER" />
+    <result column="last_buy_price" property="lastBuyPrice" jdbcType="INTEGER" />
+    <result column="max_buy_price" property="maxBuyPrice" jdbcType="INTEGER" />
+    <result column="average_buy_price" property="averageBuyPrice" jdbcType="INTEGER" />
+    <result column="near_sale_price" property="nearSalePrice" jdbcType="INTEGER" />
+    <result column="average_sale_price" property="averageSalePrice" jdbcType="INTEGER" />
+    <result column="top_sale_price" property="topSalePrice" jdbcType="INTEGER" />
+    <result column="low_sale_price" property="lowSalePrice" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.freeTime.domain.PartInfo" >
+    insert into part_info (part_create_time, service_station_no, service_station_split_no, 
+      warehouse_area, position_items, part_no, 
+      part_name, stock_amount, last_buy_price, 
+      max_buy_price, average_buy_price, near_sale_price, 
+      average_sale_price, top_sale_price, low_sale_price
+      )
+    values (#{partCreateTime,jdbcType=DATE}, #{serviceStationNo,jdbcType=VARCHAR}, #{serviceStationSplitNo,jdbcType=VARCHAR}, 
+      #{warehouseArea,jdbcType=VARCHAR}, #{positionItems,jdbcType=VARCHAR}, #{partNo,jdbcType=VARCHAR}, 
+      #{partName,jdbcType=VARCHAR}, #{stockAmount,jdbcType=INTEGER}, #{lastBuyPrice,jdbcType=INTEGER}, 
+      #{maxBuyPrice,jdbcType=INTEGER}, #{averageBuyPrice,jdbcType=INTEGER}, #{nearSalePrice,jdbcType=INTEGER}, 
+      #{averageSalePrice,jdbcType=INTEGER}, #{topSalePrice,jdbcType=INTEGER}, #{lowSalePrice,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.freeTime.domain.PartInfo" >
+    insert into part_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="partCreateTime != null" >
+        part_create_time,
+      </if>
+      <if test="serviceStationNo != null" >
+        service_station_no,
+      </if>
+      <if test="serviceStationSplitNo != null" >
+        service_station_split_no,
+      </if>
+      <if test="warehouseArea != null" >
+        warehouse_area,
+      </if>
+      <if test="positionItems != null" >
+        position_items,
+      </if>
+      <if test="partNo != null" >
+        part_no,
+      </if>
+      <if test="partName != null" >
+        part_name,
+      </if>
+      <if test="stockAmount != null" >
+        stock_amount,
+      </if>
+      <if test="lastBuyPrice != null" >
+        last_buy_price,
+      </if>
+      <if test="maxBuyPrice != null" >
+        max_buy_price,
+      </if>
+      <if test="averageBuyPrice != null" >
+        average_buy_price,
+      </if>
+      <if test="nearSalePrice != null" >
+        near_sale_price,
+      </if>
+      <if test="averageSalePrice != null" >
+        average_sale_price,
+      </if>
+      <if test="topSalePrice != null" >
+        top_sale_price,
+      </if>
+      <if test="lowSalePrice != null" >
+        low_sale_price,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="partCreateTime != null" >
+        #{partCreateTime,jdbcType=DATE},
+      </if>
+      <if test="serviceStationNo != null" >
+        #{serviceStationNo,jdbcType=VARCHAR},
+      </if>
+      <if test="serviceStationSplitNo != null" >
+        #{serviceStationSplitNo,jdbcType=VARCHAR},
+      </if>
+      <if test="warehouseArea != null" >
+        #{warehouseArea,jdbcType=VARCHAR},
+      </if>
+      <if test="positionItems != null" >
+        #{positionItems,jdbcType=VARCHAR},
+      </if>
+      <if test="partNo != null" >
+        #{partNo,jdbcType=VARCHAR},
+      </if>
+      <if test="partName != null" >
+        #{partName,jdbcType=VARCHAR},
+      </if>
+      <if test="stockAmount != null" >
+        #{stockAmount,jdbcType=INTEGER},
+      </if>
+      <if test="lastBuyPrice != null" >
+        #{lastBuyPrice,jdbcType=INTEGER},
+      </if>
+      <if test="maxBuyPrice != null" >
+        #{maxBuyPrice,jdbcType=INTEGER},
+      </if>
+      <if test="averageBuyPrice != null" >
+        #{averageBuyPrice,jdbcType=INTEGER},
+      </if>
+      <if test="nearSalePrice != null" >
+        #{nearSalePrice,jdbcType=INTEGER},
+      </if>
+      <if test="averageSalePrice != null" >
+        #{averageSalePrice,jdbcType=INTEGER},
+      </if>
+      <if test="topSalePrice != null" >
+        #{topSalePrice,jdbcType=INTEGER},
+      </if>
+      <if test="lowSalePrice != null" >
+        #{lowSalePrice,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

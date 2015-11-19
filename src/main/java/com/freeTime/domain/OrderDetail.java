@@ -1,12 +1,24 @@
 package com.freeTime.domain;
 
 public class OrderDetail {
+	/**
+	 * 订单号
+	 */
     private String orderNum;
 
+    /**
+	 * 所做项目描述
+	 */
     private String projectDesc;
 
+    /**
+	 * 工时数
+	 */
     private Integer replacePartManHour;
 
+    /**
+	 * 维修技师no
+	 */
     private String doctorNo;
 
     public String getOrderNum() {

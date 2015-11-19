@@ -22,7 +22,8 @@ CREATE TABLE Customer(
 	ext3 varchar(20) COMMENT '备注字段',
 	ext4 varchar(20) COMMENT '备注字段',
 	ext5 date COMMENT '备注字段'
-) ;
+) COMMENT '用户表' ;
+
 
 create table automobile(
 	automobile_license varchar(10) COMMENT '车牌号',
@@ -34,8 +35,8 @@ create table automobile(
 	automobile_color varchar(8) comment '汽车颜色',
 	seat int COMMENT '座位数',
 	automobile_insurance_company varchar(40) COMMENT '汽车保险公司',
-	compulsory_insurance_time date COMMENT '交强险的有效期',
-	other_insurance_time date COMMENT '其他保险的有效期',
+	compulsory_insurance_time varchar(80) COMMENT '交强险的有效期',
+	other_insurance_time varchar(80) COMMENT '其他保险的有效期',
 	insurance_type varchar(15) COMMENT '保险类型',
 	automobile_pic varchar(100) COMMENT '汽车照片路径',
 	create_time date COMMENT '创建时间',
@@ -45,7 +46,8 @@ create table automobile(
 	ext3 varchar(20) COMMENT '备注字段',
 	ext4 varchar(20) COMMENT '备注字段',
 	ext5 date COMMENT '备注字段'
-);
+) COMMENT '车辆信息表';
+
 
 create table orders(
 	order_create_time date COMMENT '订单创建时间',
@@ -85,7 +87,8 @@ create table orders(
 	invoice_title varchar(100) COMMENT '发票抬头',
 	invoice_status varchar(1)  COMMENT '发票状态  0未打印   1已打印',
 	order_status varchar(2) COMMENT '订单状态   1待接车  2待派单  3待检查  4待维修  5待完成   6待结账  7工单信息待完善  8待回访  9完成'
-);
+) COMMENT '车辆维修详情表';
+
 
 create table part_info(
 	part_create_time date COMMENT '配件首次创建时间',
@@ -103,7 +106,8 @@ create table part_info(
 	average_sale_price int COMMENT '平均出库价格',
 	top_sale_price int COMMENT '最高出库价格',
 	low_sale_price int COMMENT '最低出库价格'
-);
+) COMMENT '配件信息表';
+
 
 create table storage_sale_order_info(
 	part_order_create_time date COMMENT '配件订单创建时间',
@@ -123,10 +127,14 @@ create table storage_sale_order_info(
 	order_type varchar(1) COMMENT '订单类型  0入库订单   1出库订单',
 	order_num varchar(15) COMMENT '出库时的订单号',
 	operator varchar(20) COMMENT '操作人'
-);
+) COMMENT '配件仓库出库入库记录表';
+
+
 create table order_detail(
 	order_num varchar(15) COMMENT '订单号',
 	project_desc varchar(200) COMMENT '所做项目描述',
 	replace_part_man_hour int COMMENT '工时数',
 	doctor_no varchar(20)	COMMENT '维修技师no'
-);
+) COMMENT '订单详细记录表';
+
+

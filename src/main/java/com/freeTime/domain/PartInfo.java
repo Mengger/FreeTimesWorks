@@ -3,34 +3,79 @@ package com.freeTime.domain;
 import java.util.Date;
 
 public class PartInfo {
+	/**
+	 * 配件首次创建时间
+	 */
     private Date partCreateTime;
 
+    /**
+	 * 服务站编号
+	 */
     private String serviceStationNo;
 
+    /**
+	 * 分店编号
+	 */
     private String serviceStationSplitNo;
 
+    /**
+	 * 库区
+	 */
     private String warehouseArea;
 
+    /**
+	 * 仓位
+	 */
     private String positionItems;
 
+    /**
+	 * 配件编号
+	 */
     private String partNo;
 
+    /**
+	 * 配件名称
+	 */
     private String partName;
 
+    /**
+	 * 配件库存数量
+	 */
     private Integer stockAmount;
 
+    /**
+	 * 最后一次入库价格
+	 */
     private Integer lastBuyPrice;
 
+    /**
+	 * 历史入库最高单价
+	 */
     private Integer maxBuyPrice;
 
+    /**
+	 * 平均入库价格
+	 */
     private Integer averageBuyPrice;
 
+    /**
+	 * 最近一次出库价格
+	 */
     private Integer nearSalePrice;
 
+    /**
+	 * 平均出库价格
+	 */
     private Integer averageSalePrice;
 
+    /**
+	 * 最高出库价格
+	 */
     private Integer topSalePrice;
 
+    /**
+	 * 最低出库价格
+	 */
     private Integer lowSalePrice;
 
     public Date getPartCreateTime() {

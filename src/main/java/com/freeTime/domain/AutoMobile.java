@@ -3,44 +3,104 @@ package com.freeTime.domain;
 import java.util.Date;
 
 public class AutoMobile {
+	/**
+	 * 车架号
+	 */
     private String frameNumber;
-
+    
+    /**
+     * 牌照
+     */
     private String automobileLicense;
 
+    /**
+     * 发动机号
+     */
     private String engineNumber;
 
+    /**
+     * 汽车品牌
+     */
     private String automobileBrand;
 
+    /**
+     * 汽车型号
+     */
     private String automobileModel;
 
+    /**
+     * 排量
+     */
     private String automobileOutputValue;
 
+    /**
+     * 颜色
+     */
     private String automobileColor;
 
+    /**
+     * 座位数量
+     */
     private Integer seat;
 
+    /**
+     * 汽车保险公司
+     */
     private String automobileInsuranceCompany;
 
-    private Date compulsoryInsuranceTime;
+    /**
+     * 交强险时间
+     */
+    private String compulsoryInsuranceTime;
 
-    private Date otherInsuranceTime;
+    /**
+     * 其他险种时间
+     */
+    private String otherInsuranceTime;
 
+    /**
+     * 保险类型
+     */
     private String insuranceType;
 
+    /**
+     *汽车照片路径
+     */
     private String automobilePic;
 
+    /**
+    *创建时间
+    */
     private Date createTime;
 
+    /**
+    *修改时间
+    */
     private Date modifyTime;
 
+    /**
+    *备注字段
+    */
     private String ext1;
 
+    /**
+    *备注字段
+    */
     private String ext2;
 
+    /**
+    *备注字段
+    */
     private String ext3;
 
+    /**
+    *备注字段
+    */
     private String ext4;
 
+    /**
+    *备注字段
+    */
     private Date ext5;
 
     public String getFrameNumber() {
@@ -115,19 +175,19 @@ public class AutoMobile {
         this.automobileInsuranceCompany = automobileInsuranceCompany == null ? null : automobileInsuranceCompany.trim();
     }
 
-    public Date getCompulsoryInsuranceTime() {
+    public String getCompulsoryInsuranceTime() {
         return compulsoryInsuranceTime;
     }
 
-    public void setCompulsoryInsuranceTime(Date compulsoryInsuranceTime) {
+    public void setCompulsoryInsuranceTime(String compulsoryInsuranceTime) {
         this.compulsoryInsuranceTime = compulsoryInsuranceTime;
     }
 
-    public Date getOtherInsuranceTime() {
+    public String getOtherInsuranceTime() {
         return otherInsuranceTime;
     }
 
-    public void setOtherInsuranceTime(Date otherInsuranceTime) {
+    public void setOtherInsuranceTime(String otherInsuranceTime) {
         this.otherInsuranceTime = otherInsuranceTime;
     }
 
