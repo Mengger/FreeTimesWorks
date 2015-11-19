@@ -42,7 +42,7 @@
     <!-- spring的ibatis 配置 -->  
     <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">  
         <property name="configLocation">  
-            <value>classpath*:../java/com/freeTime/mapping/Mapper-*.xml</value>  
+            <value>classpath*:/mapping/Mapper-*.xml</value>  
         </property>  
         <property name="dataSource" ref="dataSource" />  
     </bean>  
