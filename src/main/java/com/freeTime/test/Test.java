@@ -14,7 +14,7 @@ public class Test {
 	@org.junit.Test
 	public void  insert(){
 		AutoMobile automobile=new AutoMobile();
-		automobile.setAutomobileBrand("涓�苯澶т紬");
+		automobile.setAutomobileBrand("一汽大众");
 		automobile.setModifyTime(new Date());
 		automobile.setFrameNumber("lbsfasdfasdf24566");
 		System.out.println("kai");
