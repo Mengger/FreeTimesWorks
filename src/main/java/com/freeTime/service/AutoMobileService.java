@@ -1,11 +1,8 @@
 package com.freeTime.service;
 
 public interface AutoMobileService {
-<<<<<<< HEAD
 /*master*/
-=======
 /*ttst*/
->>>>>>> ttst
 	/*四的尴尬的飞gas的*/
 /*打发打发*/
 /*打算发的是*/
