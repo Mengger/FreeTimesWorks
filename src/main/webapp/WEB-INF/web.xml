@@ -12,7 +12,7 @@
 		<filter-name>struts2</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath:config/Spring/spring.xml</param-value>
@@ -21,4 +21,8 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
+
+	<welcome-file-list>
+		<welcome-file>html/test.jsp</welcome-file>
+	</welcome-file-list>
 </web-app>
