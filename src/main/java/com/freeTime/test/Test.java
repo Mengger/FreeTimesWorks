@@ -2,10 +2,12 @@ package com.freeTime.test;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
 
 import com.freeTime.dao.AutoMobileMapper;
 import com.freeTime.domain.AutoMobile;
 
+@ContextConfiguration("classpath:config/Spring/spring.xml")
 public class Test {
 
 	@Autowired
@@ -18,7 +20,7 @@ public class Test {
 		automobile.setModifyTime(new Date());
 		automobile.setFrameNumber("lbsfasdfasdf24566");
 		System.out.println("kai");
-		System.out.println(autoMobileMapper.toString());
+		System.out.println(String.valueOf(autoMobileMapper));
 		System.out.println("end");
 		autoMobileMapper.insert(automobile);
 	}

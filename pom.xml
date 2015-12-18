@@ -92,6 +92,12 @@
 			<version>${struts.version}</version>
 		</dependency>
 
+ 		<dependency>
+			<groupId>org.apache.struts.xwork</groupId>
+			<artifactId>xwork-core</artifactId>
+			<version>${struts.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>

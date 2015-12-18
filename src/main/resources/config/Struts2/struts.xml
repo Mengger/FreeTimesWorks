@@ -2,18 +2,18 @@
 <!DOCTYPE struts PUBLIC
 	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
-
 <struts>
-    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
     <constant name="struts.ui.theme" value="simple" />
     <constant name="struts.objectFactory.spring.autoWire" value="no" />
-    
-    <package name="default" namespace="/" extends="struts-default">
-		<action name="gotoAllUsers" class="userAction" method="gotoAllUsers">
-    		<result name="success">/allUsers.jsp</result>
-    	</action>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.objectFactory" value="com.opensymphony.xwork2.ObjectFactory" />
+	
+    <package name="default" namespace="/"  extends="struts-default">
+    	<action name="test" class="com.freeTime.action.TestAction" method="execute">
+            <result name="success">/html/MyHtml.html</result>
+        </action>
     </package>
-    
+    	
     
 </struts>
