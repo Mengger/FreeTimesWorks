@@ -44,7 +44,7 @@
 		</dependency>
 
 
-		<!-- json准换工具 -->
+		<!-- json转换工具 -->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
@@ -80,11 +80,17 @@
 			<version>${struts.version}</version>
 		</dependency>
 
+ 		<dependency>
+			<groupId>org.apache.struts.xwork</groupId>
+			<artifactId>xwork-core</artifactId>
+			<version>${struts.version}</version>
+		</dependency>
+<!-- 
 		<dependency>
 			<groupId>org.apache.struts</groupId>
 			<artifactId>struts2-convention-plugin</artifactId>
 			<version>${struts.version}</version>
-		</dependency>
+		</dependency> -->
 
 		<dependency>
 			<groupId>org.apache.struts</groupId>
@@ -92,17 +98,11 @@
 			<version>${struts.version}</version>
 		</dependency>
 
- 		<dependency>
-			<groupId>org.apache.struts.xwork</groupId>
-			<artifactId>xwork-core</artifactId>
-			<version>${struts.version}</version>
-		</dependency>
-		
-		<dependency>
+		<!-- <dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
 			<version>${struts.d.javassist}</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- spring 依赖包 -->
 		<dependency>
