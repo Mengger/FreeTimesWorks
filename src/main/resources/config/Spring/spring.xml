@@ -12,7 +12,10 @@
                         http://www.springframework.org/schema/context/spring-context-3.0.xsd" 
 	default-lazy-init="false" default-autowire="byName">
 
-	<!-- 引入jdbc配置文件 -->
+	<context:component-scan base-package="com.freeTime"></context:component-scan>
+	<!--支持基于注解的配置方式，为@Autowired、@Resource、@PostConstruct、@PreDestroy注解提供支持 --> 	   
+   	<!--<context:annotation-config/> -->
+	<!--引入jdbc配置文件 -->
 	<context:property-placeholder location="classpath:config/Spring/jdbc.properties"/>
 	
 	<!--创建jdbc数据源 -->
@@ -27,17 +30,12 @@
 		<property name="url" value="${jdbc.url}" />
 	</bean>
 
-
 	<!-- 创建SqlSessionFactory，同时指定数据源 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="mapperLocations" value="classpath:config/mapping/*.xml" />
 	</bean>
-
-	<!--创建数据映射器，数据映射器必须为接口 -->
-	<bean id="autoMobileMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
-		<property name="mapperInterface" value="com.freeTime.dao.AutoMobileMapper" />
-		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
-	</bean>
-
+	
+	<import resource="spring-dao.xml"/>
+	
 </beans>

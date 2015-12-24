@@ -8,10 +8,10 @@
     <constant name="struts.objectFactory.spring.autoWire" value="no" />
     <constant name="struts.enable.DynamicMethodInvocation" value="false" />
     <constant name="struts.objectFactory" value="com.opensymphony.xwork2.ObjectFactory" />
-	
+	<constant name="struts.objectFactory" value="spring" /> 
 	
     <package name="default" namespace="/"  extends="struts-default">
-    	<action name="test" class="com.freeTime.action.TestAction" method="execute">
+    	<action name="test" class="testAction" method="execute">
             <result name="success">/html/MyHtml.html</result>
         </action>
     </package>
