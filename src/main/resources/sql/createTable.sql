@@ -98,14 +98,8 @@ create table part_info(
 	position_items varchar(30) COMMENT '仓位',
 	part_no varchar(30) COMMENT '配件编号',
 	part_name varchar(50) COMMENT '配件名称',
-	stock_amount int COMMENT '配件库存数量',
-	last_buy_price int COMMENT '最后一次入库价格',
-	max_buy_price int COMMENT '历史入库最高单价',
-	average_buy_price int COMMENT '平均入库价格',
-	near_sale_price int COMMENT '最近一次出库价格',
-	average_sale_price int COMMENT '平均出库价格',
-	top_sale_price int COMMENT '最高出库价格',
-	low_sale_price int COMMENT '最低出库价格'
+	part_desc varchar(200) COMMENT '配件描述',
+	stock_amount int COMMENT '配件库存数量'
 ) COMMENT '配件信息表';
 
 
@@ -134,7 +128,7 @@ create table order_detail(
 	order_num varchar(15) COMMENT '订单号',
 	project_desc varchar(200) COMMENT '所做项目描述',
 	replace_part_man_hour int COMMENT '工时数',
-	doctor_no varchar(20)	COMMENT '维修技师no'
+	doctor_no varchar(20) COMMENT '维修技师no'
 ) COMMENT '订单详细记录表';
 
 
